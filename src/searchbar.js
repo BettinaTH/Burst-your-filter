@@ -1,11 +1,8 @@
 import React from 'react';
-import axios from './axios';
+//import axios from './axios';
+//import { Link } from 'react-router-dom';
 
-import Searchbar from './searchbar';
-import Results from './results';
-
-
-export default class App extends React.Component {
+export default class Searchbar extends React.Component {
     constructor(props) {
         super(props);
         this.state = {};
@@ -35,13 +32,21 @@ export default class App extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className='searchbar'>
                 <div>
-                <Searchbar/>
+                    <div>In wich year were you born?</div>
+                    <input name="your birth year" placeholder="e.g. 1982"onChange={this.handleChange}/>
                 </div>
-                <Results/>
+                <div>
+                    <div>What is your gender</div>
+                    <input name="gender" placeholder="femals/male"onChange={this.handleChange}/>
+                </div>
+                <div>
+                    <div>What is your country of cultural heritage</div>
+                    <input name="country" placeholder="Germany"onChange={this.handleChange}/>
+                </div>
+                <button onClick={this.submit}>burst your bubble</button>
             </div>
-
         )
     };
 }

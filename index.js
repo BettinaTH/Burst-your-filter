@@ -1,8 +1,11 @@
 const express = require('express');
 const app = express();
 const compression = require('compression');
+const bodyParser = require('body-parser');
+const csurf = require('csurf');
 
 app.use(compression());
+app.use(bodyParser.json());
 
 if (process.env.NODE_ENV != 'production') {
     app.use(
@@ -18,6 +21,18 @@ if (process.env.NODE_ENV != 'production') {
 app.use(
     express.static('./public')
 );
+
+app.use(csurf());
+
+app.use(function(req, res, next){
+    res.cookie('mytoken', req.csrfToken());
+    next();
+});
+
+app.use(function(req, res, next){
+    res.cookie('mytoken', req.csrfToken());
+    next();
+});
 
 /////// LAST ROUTE ////
 app.get('*', function(req, res) {
