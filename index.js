@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const compression = require('compression');
 const bodyParser = require('body-parser');
-const csurf = require('csurf');
+//const csurf = require('csurf');
 
 app.use(compression());
 app.use(bodyParser.json());
@@ -22,17 +22,64 @@ app.use(
     express.static('./public')
 );
 
-app.use(csurf());
+// app.use(csurf());
 
-app.use(function(req, res, next){
-    res.cookie('mytoken', req.csrfToken());
-    next();
+// app.use(function(req, res, next){
+//     res.cookie('mytoken', req.csrfToken());
+//     next();
+// });
+
+// app.use(function(req, res, next){
+//     res.cookie('mytoken', req.csrfToken());
+//     next();
+// });
+
+/// REQUEST TO MOVIEDATABASE
+
+/// MOVIE BY YEAR
+var request = require("request");
+
+var options = { method: 'GET',
+  url: 'https://api.themoviedb.org/3/discover/movie',
+  qs: 
+   { 'primary_release_date.lte': '1982',
+     page: '1',
+     include_video: 'false',
+     include_adult: 'false',
+     sort_by: 'popularity.desc',
+     language: 'en-US',
+     api_key: 'hgjdjjrnbjgkjrjvkigtjdkgkit' },
+  body: '{}' };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
 });
 
-app.use(function(req, res, next){
-    res.cookie('mytoken', req.csrfToken());
-    next();
+/// MOVIE BY NOT GENRE
+var request = require("request");
+
+var options = { method: 'GET',
+  url: 'https://api.themoviedb.org/3/discover/movie',
+  qs: 
+   { without_genres: 'crime',
+     'primary_release_date.lte': '1982',
+     page: '1',
+     include_video: 'false',
+     include_adult: 'false',
+     sort_by: 'popularity.desc',
+     api_key: 'sdkjfhdkjshfdskjhf' },
+  body: '{}' };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
 });
+
+
+
 
 /////// LAST ROUTE ////
 app.get('*', function(req, res) {
