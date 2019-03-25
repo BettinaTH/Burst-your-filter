@@ -1,52 +1,43 @@
 import React from 'react';
-import axios from './axios';
 import { connect } from 'react-redux';
+import { receiveMoviesByYear } from './actions';
+import Teaser from './teaser';
 
 
 class Results extends React.Component {
     constructor() {
         super();
-        this.state = {
-            movies : []
-        }
     }
 
     componentDidMount(){
         console.log('Mount in results.js')
-        axios.get('https://api.themoviedb.org/3/movie/166428', {
-            params: {
-                api_key: '77da04c403c5708cfdf55c397aabb35c'
-            }
-        })
-        .then(function (response) {
-            console.log(response);
-        })
-        .catch(function (error) {
-            console.log(error);
-        })
-        .then(function () {
-            // always executed
-        }); 
+        this.props.dispatch(receiveMoviesByYear());
+
     }
 
     render() {
-
-        // let movieList = [];
-
-        // for ( const [index, movie] of this.state.movies.entries()){
-        //     movieList.push(<li>{movie.name}</li>)
-        // }
+        const posterURL = 'https://image.tmdb.org/t/p/w500'
+        const movies = this.props.state.year
+        console.log('const movies in results: ', movies)
+        const movieList = movies && movies.map((each) =>
+        <div key={each.id} className='details'>
+                <img className='pic' src= {posterURL + each.poster_path}></img>
+                <div>{each.original_title}</div>
+            </div>
+            
+        )
+        
         return (
             <div>
                 <h2>Here are the search results</h2>
-    
+                {movieList}
             </div>
         );
     };
 
 }
 const mapStateToProps = state =>{
-    console.log('state in results.js:');
+    console.log('state in results.js:', state);
     return{
         state
 

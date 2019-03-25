@@ -35,3 +35,18 @@ button{
     font-style: white;
     border-radius: 10px;
 }
+.pic{
+    height: 200px;
+    width: 160px;
+    margin-right: 10px;
+}
+.details{
+    width: 300px;
+    border: 2px solid #e5464b;
+    margin-left: 5px;
+    margin-bottom: 5px;
+    padding-left: 2px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
