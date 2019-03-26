@@ -3,6 +3,8 @@ import axios from './axios';
 
 import Searchbar from './searchbar';
 import Results from './results';
+//import Gender from './results-gender';
+import Genre from './results-genre';
 
 
 export default class App extends React.Component {
@@ -17,29 +19,20 @@ export default class App extends React.Component {
             this[e.target.name] = e.target.value;
         }
     
-        // submit(e) {
-        //     axios.post('/login', {
-        //         email: this.email,
-        //         password: this.password
-        //     }).then(({data}) => {
-        //         if (data.success) {
-        //             location.replace('/results');
-        //             } else {
-        //                 this.setState({
-        //                     error: true
-        //                 });
-        //             }
-        //         })
-        //     };
-
-
     render() {
         return (
             <div>
                 <div>
                 <Searchbar/>
                 </div>
-                <Results/>
+                <div className='result-container'>
+                    <div className='result-col'>
+                        <Results/>
+                    </div>
+                    <div className='result-col'>
+                        <Genre/>
+                    </div>
+                </div>
             </div>
 
         )

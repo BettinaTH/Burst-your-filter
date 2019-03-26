@@ -1,28 +1,35 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { receiveMoviesByYear } from './actions';
-import Teaser from './teaser';
+import { receiveMoviesByYear, popupVisisbile, popupHide } from './actions';
+import Overview from './overview';
 
 
 class Results extends React.Component {
     constructor() {
         super();
+        this.props.dispatch(popupVisisbile());
     }
 
-    componentDidMount(){
-        console.log('Mount in results.js')
-        this.props.dispatch(receiveMoviesByYear());
+    
 
+    componentWillReceiveProps(nextProps) {
+        if(nextProps.state.year != this.props.state.year && nextProps.state.year.length == 4) {
+            this.props.dispatch(receiveMoviesByYear(nextProps.state.year));
+        }
     }
 
+// set property of uploader to each movie
     render() {
+        
         const posterURL = 'https://image.tmdb.org/t/p/w500'
-        const movies = this.props.state.year
+        const movies = this.props.state.yearList
         console.log('const movies in results: ', movies)
         const movieList = movies && movies.map((each) =>
-        <div key={each.id} className='details'>
+        <div key={each.id} onClick={this.showUploader} className='details'>
                 <img className='pic' src= {posterURL + each.poster_path}></img>
                 <div>{each.original_title}</div>
+             <Overview 
+                each={each}/>}
             </div>
             
         )
@@ -40,7 +47,7 @@ const mapStateToProps = state =>{
     console.log('state in results.js:', state);
     return{
         state
-
+        //year: state.yearList
     }
 }
 export default connect(mapStateToProps)(Results)

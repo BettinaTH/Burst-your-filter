@@ -1,34 +1,21 @@
 import React from 'react';
 import axios from './axios';
+import { connect } from 'react-redux';
+import { setParam } from './actions';
 //import { Link } from 'react-router-dom';
 
-export default class Searchbar extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {};
+class Searchbar extends React.Component {
+    constructor() {
+        super();
+       
         this.handleChange = this.handleChange.bind(this);
-        this.submit = this.submit.bind(this);
+
         }
         
         handleChange(e) {
-            this[e.target.name] = e.target.value;
+            this.props.dispatch(setParam(e.target.name, e.target.value))
         }
     
-        submit(e) {
-            axios.get('/get-results', {
-                year: this.year,
-                gender: this.gender,
-                country: this.country
-            }).then(({data}) => {
-                if (data.success) {
-                    location.replace('/');
-                    } else {
-                        this.setState({
-                            error: true
-                        });
-                    }
-                })
-            };
 
 
     render() {
@@ -36,18 +23,24 @@ export default class Searchbar extends React.Component {
             <div className='searchbar'>
                 <div>
                     <div>In wich year were you born?</div>
-                    <input name="year" placeholder="e.g. 1982"onChange={this.handleChange}/>
+                    <input name="year" placeholder="e.g. 1982" onChange={this.handleChange}/>
                 </div>
                 <div>
                     <div>What is your gender</div>
-                    <input name="gender" placeholder="femals/male"onChange={this.handleChange}/>
+                    <input name="gender" placeholder="female/male" onChange={this.handleChange}/>
                 </div>
                 <div>
-                    <div>What is your country of cultural heritage</div>
-                    <input name="country" placeholder="Germany"onChange={this.handleChange}/>
+                    <div>What is/ are your favourite genre</div>
+                    <input name="genre" placeholder="comedy" onChange={this.handleChange}/>
                 </div>
                 <button onClick={this.submit}>burst your bubble</button>
             </div>
         )
     };
 }
+const mapStateToProps = state => {
+    return{
+        state
+    }
+}
+export default connect(mapStateToProps)(Searchbar)
