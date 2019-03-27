@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Welcome} from './welcome';
+import Welcome from './welcome';
 import  App from './app';
 /// REDUX 
 import { createStore, applyMiddleware } from 'redux';
@@ -14,7 +14,9 @@ const store = createStore(reducer, composeWithDevTools(applyMiddleware(reduxProm
 let elem;
 
 if (location.pathname == '/welcome') {
-    elem = <Welcome/>
+    elem = (
+                <p>Welcome to burtst your bubble</p>
+        )
 } else {
     elem = (
             <Provider store =  {store}>
@@ -22,6 +24,8 @@ if (location.pathname == '/welcome') {
             </Provider>
     );
 }
+
+
 
 ReactDOM.render(
     elem,

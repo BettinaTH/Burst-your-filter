@@ -15,9 +15,10 @@ class Searchbar extends React.Component {
         
         handleChange(e) {
             this.props.dispatch(setParam(e.target.name, e.target.value))
-        }
+            sessionStorage.setItem(e.target.name, e.target.value)
+            console.log('STORAGE: ', sessionStorage)
+        } 
       
-    
 
 
     render() {
@@ -31,7 +32,6 @@ class Searchbar extends React.Component {
                     <div>What is/ are your favourite genre</div>
                     <input name="genre" placeholder="comedy" onChange={this.handleChange}/>
                 </div>
-                <button onClick={this.submit}>burst your bubble</button>
             </div>
         )
     };

@@ -1,15 +1,22 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { receiveMoviesByYear, popupVisisbile, popupHide } from './actions';
+import { receiveMoviesByYear } from './actions';
 import Overview from './overview';
 
 
 class Results extends React.Component {
     constructor() {
         super();
-        
+        this.state ={
+            overviewIsVisible: false
+        }
+    this.showOverview = this.showOverview.bind(this);     
     }
-
+    showOverview(){
+        this.setState({
+            overviewIsVisible: true
+        })
+    }
     
 
     componentWillReceiveProps(nextProps) {
@@ -23,11 +30,12 @@ class Results extends React.Component {
         
         const posterURL = 'https://image.tmdb.org/t/p/w500'
         const movies = this.props.state.yearList
-        console.log('const movies in results: ', movies)
+        
         const movieList = movies && movies.map((each) =>
         <div key={each.id} onClick={this.showUploader} className='details'>
                 <img className='pic' src= {posterURL + each.poster_path}></img>
                 <div>{each.original_title}</div>
+                {this.state.overviewIsVisible && <Overview each={each.overview}/>}  
             </div>
             
         )

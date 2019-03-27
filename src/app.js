@@ -1,10 +1,11 @@
 import React from 'react';
 import axios from './axios';
-
+import Welcome from './welcome';
 import Searchbar from './searchbar';
 import Results from './results';
-//import Gender from './results-gender';
 import Genre from './results-genre';
+import { BrowserRouter, Route } from 'react-router-dom';
+import welcome from './welcome';
 
 
 export default class App extends React.Component {
@@ -21,20 +22,42 @@ export default class App extends React.Component {
     
     render() {
         return (
-            <div>
+        <BrowserRouter>
+        <div className= 'bg-pan-bottom'>
+            <Route
+                exact
+                path="/start"
+                render={() => (
+                        <Welcome/>
+                    )}
+            />
+            <Route
+                exact
+                path="/"
+                render={() => (
                 <div>
-                <Searchbar/>
-                </div>
-                <div className='result-container'>
-                    <div className='result-col'>
-                        <Results/>
+                    <div className='nav-bar'>
+                        <img className="logo-home vibrate-1" src="bubble.png" alt="bubble"/>
+                        <div className='word-order'>
+                            <h2 className='letters'>BURST</h2><h2 className='letters'>YOUR</h2><h2 className='letters'>BUBBLE</h2>
+                        </div>
                     </div>
-                    <div className='result-col'>
-                        <Genre/>
+                    <div>
+                        <Searchbar/>
+                    </div>
+                    <div className='result-container'>
+                        <div className='result-col'>
+                            <Results/>
+                        </div>
+                        <div className='result-col'>
+                            <Genre/>
+                        </div>
                     </div>
                 </div>
-            </div>
-
+                )}
+            />
+        </div>
+        </BrowserRouter>
         )
     };
 }

@@ -1,12 +1,22 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { receiveMoviesByGenre } from './actions';
+import Overview from './overview';
 //import Teaser from './teaser';
 
 
 class Genre extends React.Component {
     constructor() {
         super();
+        this.state ={
+            overviewIsVisible: false
+        }
+    this.showOverview = this.showOverview.bind(this);
+    }
+    showOverview(){
+        this.setState({
+            overviewIsVisible: true
+        })
     }
 
     componentWillReceiveProps(nextProps) {
@@ -20,10 +30,11 @@ class Genre extends React.Component {
         const movies = this.props.state.genreList
         console.log('const movies in Genre: ', movies)
         const movieList = movies && movies.map((each) =>
-        <div key={each.id} className='details'>
+        <div key={each.id} onClick={this.showOverview} className='details'>
                 <img className='pic' src= {posterURL + each.poster_path}></img>
                 <div>{each.original_title}</div>
-            </div>
+                {this.state.overviewIsVisible && <Overview each={each.overview}/>}
+        </div>
             
         )
         
