@@ -4,7 +4,7 @@ const compression = require('compression');
 const bodyParser = require('body-parser');
 const cookieSession = require('cookie-session');
 const csurf = require('csurf');
-const secret = require('secret');
+//const secret = require('secret');
 
 app.use(compression());
 app.use(bodyParser.json());
@@ -43,11 +43,11 @@ app.use(function(req, res, next){
 
 /// REQUEST TO MOVIEDATABASE
 
-app.get('https://api.themoviedb.org/3/discover/movie' + queryString, (req, res) =>{
-console.log(req.session)
+// app.get('https://api.themoviedb.org/3/discover/movie' + queryString, (req, res) =>{
+// console.log(req.session)
 
 
-})
+// })
 
 
 

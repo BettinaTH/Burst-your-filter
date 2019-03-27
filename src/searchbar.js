@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from './axios';
 import { connect } from 'react-redux';
-import { setParam } from './actions';
+import { setParam, setGenre } from './actions';
 //import { Link } from 'react-router-dom';
 
 class Searchbar extends React.Component {
@@ -9,12 +9,14 @@ class Searchbar extends React.Component {
         super();
        
         this.handleChange = this.handleChange.bind(this);
+        //this.handleGenre = this.handleGenre.bind(this);
 
         }
         
         handleChange(e) {
             this.props.dispatch(setParam(e.target.name, e.target.value))
         }
+      
     
 
 
@@ -24,10 +26,6 @@ class Searchbar extends React.Component {
                 <div>
                     <div>In wich year were you born?</div>
                     <input name="year" placeholder="e.g. 1982" onChange={this.handleChange}/>
-                </div>
-                <div>
-                    <div>What is your gender</div>
-                    <input name="gender" placeholder="female/male" onChange={this.handleChange}/>
                 </div>
                 <div>
                     <div>What is/ are your favourite genre</div>

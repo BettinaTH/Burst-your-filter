@@ -7,7 +7,7 @@ import Overview from './overview';
 class Results extends React.Component {
     constructor() {
         super();
-        this.props.dispatch(popupVisisbile());
+        
     }
 
     
@@ -28,8 +28,6 @@ class Results extends React.Component {
         <div key={each.id} onClick={this.showUploader} className='details'>
                 <img className='pic' src= {posterURL + each.poster_path}></img>
                 <div>{each.original_title}</div>
-             <Overview 
-                each={each}/>}
             </div>
             
         )

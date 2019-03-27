@@ -15,12 +15,6 @@ class Genre extends React.Component {
         }
     }
 
-    // componentDidMount(){
-    //     console.log('Mount in GENRE.js')
-    //     this.props.dispatch(receiveMoviesByGenre());
-
-    // }
-
     render() {
         const posterURL = 'https://image.tmdb.org/t/p/w500'
         const movies = this.props.state.genreList
@@ -45,8 +39,8 @@ class Genre extends React.Component {
 const mapStateToProps = state =>{
     console.log('state in Genre.js:', state);
     return{
-        
         state
+        //genre: state.genreList && state.genreList.filter(genreList =>genreList.genre_ids[0])
 
     }
 }
