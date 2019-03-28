@@ -18,12 +18,16 @@ class Welcome extends React.Component {
             <div className='container-homepage'>
                 <div className='container-col'>
                     <img className="logo-home vibrate-1" src="bubble.png" alt="bubble"/>
-                    <p>BURST YOUR BUBBLE</p>
+                    <h2 className='letters'>BURST YOUR BUBBLE</h2>
                 </div>
-                <div>
-                    <Searchbar/>
-                </div>  
-                    <button onClick={this.submit}>burst your bubble</button>
+                <div className='container-row'>
+                    <div>
+                        <Searchbar/>
+                    </div>
+                </div>
+                <div className='container-row'>
+                <button className='call-to-action' onClick={this.submit}>Burst your bubble</button>
+                </div>
             </div>
         </div>
     );

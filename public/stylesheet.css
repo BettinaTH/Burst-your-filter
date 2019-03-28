@@ -1,11 +1,20 @@
 
 body{
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-   background-color:aquamarine
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333333;
+  background-image: url("bubbles.png"); /* The image used */
+  height: 500px; /* You must set a specified height */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
+  margin: 20px;
 }
+
 .nav-bar{
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: 120px 120px auto 100px 100px;
+    margin-top: 20px;
+
 }
 .word-order{
     display: flex;
@@ -20,13 +29,17 @@ border-top: 30%;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    margin-top: 150px;
 }
 .container-col{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
+}
+.container-row{
+  display: flex;
+  justify-content: center;
 }
 .logo-home{
     height: 100px;
@@ -37,9 +50,24 @@ border-top: 30%;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
+    margin-top: 1rem;
+    align-content: flex-start;
 }
 input{
-    border-color: #e5464b
+    border-color: #e5464b;
+    border-radius: 10rem;
+    padding-left: 2rem;
+    margin: 10px;
+    height: 2rem;
+}
+.question{
+  margin-left: 10px;
+}
+.search-category{
+  display: flex;
+  flex-direction: column;
+
+  margin: 10px;
 }
 .letters{
         margin-bottom:0px;
@@ -50,8 +78,14 @@ button{
     background-color: #e5464b;
     font-style: white;
     height: 40px;
-    width: 60px;
-    border-radius: 10px;}
+    width: 170px;
+    border-radius: 10rem;
+  }
+.call-to-action{
+  color: white;
+  font-size: 15px;
+  font-style: bold;
+}
     
 .vibrate-1 {
 	-webkit-animation: vibrate-1 2s linear infinite both;
@@ -77,13 +111,102 @@ button{
 .result-container{
     display: flex;
     flex-direction: row;
+    justify-content: center;
 }
 .result-col{
-    margin-left: 20px;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-top: 50px;
 }
-.shadow-drop-center {
-	-webkit-animation: shadow-drop-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-	        animation: shadow-drop-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+/* OVERVIEW*/
+      
+.overview {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.overview .overview-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: -1;
+}
+
+.overview .overview-content {
+  position: relative;
+  background: white;
+  width: 600px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+} 
+.overview .overview-content {
+  padding: 2rem;
+}
+.overview-details{
+  display: flex;
+  flex-direction: row;
+  padding: 2rem;
+}
+.overview-number-rating{
+  position: absolute;
+  margin-left: 1.9rem;
+  margin-top: 1.74rem;
+  font-style: bold;
+}
+.overview-rating{
+  height: 120px;
+  width: 120px;
+  position: relative;
+  margin-right: 20px;
+}
+
+.overview-star{
+  height: 80px;
+  width: 80px;
+  position: absolute
+}
+.overview .overview-content .backdrop-image{
+  width: 100%;
+}
+.overview .overview-content .poster-image{
+  width: 200px;
+  position: absolute;
+  top: 4rem;
+  left: 2rem;
+  border: 0.5rem solid white;
+  
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+.overview .overview-content .close{
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  cursor: pointer;
+}
+.partner-logo{
+  height: 50px;
+  margin: 5px;
+}
+
+    
+/*ANIMATION*/
+
+.swing-in-top-fwd {
+	-webkit-animation: swing-in-top-fwd 0.5s cubic-bezier(0.175, 0.885, 0.320, 1.275) both;
+	        animation: swing-in-top-fwd 0.5s cubic-bezier(0.175, 0.885, 0.320, 1.275) both;
+}
+
+.swing-out-top-bck{
+	-webkit-animation: swing-out-top-bck 0.45s cubic-bezier(0.600, -0.280, 0.735, 0.045) both;
+	        animation: swing-out-top-bck 0.45s cubic-bezier(0.600, -0.280, 0.735, 0.045) both;
 }
 
 /* ----------------------------------------------
@@ -148,4 +271,81 @@ button{
                   transform: translate(0);
         }
       }
-      
+/**
+ * ----------------------------------------
+ * animation swing-in-top-fwd
+ * ----------------------------------------
+ */
+ @-webkit-keyframes swing-in-top-fwd {
+  0% {
+    -webkit-transform: rotateX(-100deg);
+            transform: rotateX(-100deg);
+    -webkit-transform-origin: top;
+            transform-origin: top;
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: rotateX(0deg);
+            transform: rotateX(0deg);
+    -webkit-transform-origin: top;
+            transform-origin: top;
+    opacity: 1;
+  }
+}
+@keyframes swing-in-top-fwd {
+  0% {
+    -webkit-transform: rotateX(-100deg);
+            transform: rotateX(-100deg);
+    -webkit-transform-origin: top;
+            transform-origin: top;
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: rotateX(0deg);
+            transform: rotateX(0deg);
+    -webkit-transform-origin: top;
+            transform-origin: top;
+    opacity: 1;
+  }
+}
+/**
+ * ----------------------------------------
+ * animation swing-out-top-bck
+ * ----------------------------------------
+ */
+ @-webkit-keyframes swing-out-top-bck {
+  0% {
+    -webkit-transform: rotateX(0deg);
+            transform: rotateX(0deg);
+    -webkit-transform-origin: top;
+            transform-origin: top;
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: rotateX(-100deg);
+            transform: rotateX(-100deg);
+    -webkit-transform-origin: top;
+            transform-origin: top;
+    opacity: 0;
+  }
+}
+@keyframes swing-out-top-bck {
+  0% {
+    -webkit-transform: rotateX(0deg);
+            transform: rotateX(0deg);
+    -webkit-transform-origin: top;
+            transform-origin: top;
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: rotateX(-100deg);
+            transform: rotateX(-100deg);
+    -webkit-transform-origin: top;
+            transform-origin: top;
+    opacity: 0;
+  }
+}
+
+
+
+  

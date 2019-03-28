@@ -1,22 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { receiveMoviesByGenre } from './actions';
-import Overview from './overview';
+import { receiveMoviesByGenre, showDetailsForMovie } from './actions';
 //import Teaser from './teaser';
 
 
 class Genre extends React.Component {
     constructor() {
         super();
-        this.state ={
-            overviewIsVisible: false
-        }
-    this.showOverview = this.showOverview.bind(this);
+        
     }
-    showOverview(){
-        this.setState({
-            overviewIsVisible: true
-        })
+    showOverview(movieID){
+        this.props.dispatch(showDetailsForMovie(movieID))
     }
 
     componentWillReceiveProps(nextProps) {
@@ -29,18 +23,18 @@ class Genre extends React.Component {
         const posterURL = 'https://image.tmdb.org/t/p/w500'
         const movies = this.props.state.genreList
         console.log('const movies in Genre: ', movies)
-        const movieList = movies && movies.map((each) =>
-        <div key={each.id} onClick={this.showOverview} className='details'>
-                <img className='pic' src= {posterURL + each.poster_path}></img>
-                <div>{each.original_title}</div>
-                {this.state.overviewIsVisible && <Overview each={each.overview}/>}
+        const movieList = movies && movies.map((movie) =>
+        <div key={movie.id} onClick={() => this.showOverview(movie.id)} className='details swing-in-top-fwd'>
+                <img className='pic' src= {posterURL + movie.poster_path}></img>
+                <div>{movie.original_title}</div>
         </div>
             
         )
         
         return (
             <div>
-                <h2>Here are the search results</h2>
+                <h2>Here is the list of movies</h2>
+                <h4>which are older than you.</h4>
                 {movieList}
             </div>
         );
@@ -51,8 +45,6 @@ const mapStateToProps = state =>{
     console.log('state in Genre.js:', state);
     return{
         state
-        //genre: state.genreList && state.genreList.filter(genreList =>genreList.genre_ids[0])
-
     }
 }
 export default connect(mapStateToProps)(Genre)

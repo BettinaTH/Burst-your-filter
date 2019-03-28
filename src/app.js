@@ -5,7 +5,8 @@ import Searchbar from './searchbar';
 import Results from './results';
 import Genre from './results-genre';
 import { BrowserRouter, Route } from 'react-router-dom';
-import welcome from './welcome';
+import Overview from './overview';
+
 
 
 export default class App extends React.Component {
@@ -13,7 +14,6 @@ export default class App extends React.Component {
         super(props);
         this.state = {};
         this.handleChange = this.handleChange.bind(this);
-        //this.submit = this.submit.bind(this);
         }
         
         handleChange(e) {
@@ -23,7 +23,7 @@ export default class App extends React.Component {
     render() {
         return (
         <BrowserRouter>
-        <div className= 'bg-pan-bottom'>
+        <div>
             <Route
                 exact
                 path="/start"
@@ -41,9 +41,10 @@ export default class App extends React.Component {
                         <div className='word-order'>
                             <h2 className='letters'>BURST</h2><h2 className='letters'>YOUR</h2><h2 className='letters'>BUBBLE</h2>
                         </div>
+                        <Searchbar/>
                     </div>
                     <div>
-                        <Searchbar/>
+                       
                     </div>
                     <div className='result-container'>
                         <div className='result-col'>
@@ -53,6 +54,7 @@ export default class App extends React.Component {
                             <Genre/>
                         </div>
                     </div>
+                    <Overview/>
                 </div>
                 )}
             />

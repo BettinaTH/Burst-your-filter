@@ -1,4 +1,10 @@
 export default function reducer(state = {}, action){
+
+    let initialState = JSON.parse(localStorage.getItem('state'));
+
+    if(initialState) {
+        state = initialState;
+    }
    
     if(action.type == 'RECEIVE_MOVIES_YEAR'){
         state = Object.assign({}, state, {
@@ -24,6 +30,14 @@ export default function reducer(state = {}, action){
             genre: action.value
         });
     }
+
+    if(action.type == 'SET_OVERVIEW_MOVIE'){
+        state = Object.assign({}, state, {
+            movie: action.movie
+        });
+    }
+
+    localStorage.setItem('state', JSON.stringify(state));
    
     return state
 }
