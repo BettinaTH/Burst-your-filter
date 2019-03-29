@@ -29,15 +29,17 @@ class Results extends React.Component {
         const movieList = movies && movies.map((movie) =>
         <div key={movie.id} onClick={() => this.showOverview(movie.id)} className='details swing-in-top-fwd '>
                 <img className='pic' src= {posterURL + movie.poster_path}></img>
-                <div>{movie.original_title}</div>
+                <h3 className='results-title'>{movie.original_title}</h3>
             </div>
             
         )
         
         return (
             <div>
-                <h2>Here is a list of movies</h2>
-                <h4>which you don't watch normaly</h4>
+                <div className='results-heading'>
+                    <h2>Here is a list of movies</h2>
+                    <h4>which are older than you.</h4>
+                </div>
                 {movieList}
             </div>
         );

@@ -29,8 +29,8 @@ class Searchbar extends React.Component {
                     <input name="year" placeholder="e.g. 1982" onChange={this.handleChange} value={this.props.state.year}/>
                 </div>
                 <div className='search-category'>
-                    <h3 className='question'>What is/ are your favourite genre</h3>
-                    <input name="genre" placeholder="comedy" onChange={this.handleChange} value={this.props.state.genre}/>
+                    <h3 className='question'>What are your favourite  movie genre</h3>
+                    <input name="genre" placeholder="e.g. Comedy" onChange={this.handleChange} value={this.props.state.genre}/>
                 </div>
             </div>
         )

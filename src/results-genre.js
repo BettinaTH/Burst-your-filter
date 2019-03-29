@@ -26,7 +26,7 @@ class Genre extends React.Component {
         const movieList = movies && movies.map((movie) =>
         <div key={movie.id} onClick={() => this.showOverview(movie.id)} className='details swing-in-top-fwd'>
                 <img className='pic' src= {posterURL + movie.poster_path}></img>
-                <div>{movie.original_title}</div>
+                <h3 className='results-title'>{movie.original_title}</h3>
         </div>
             
         )
