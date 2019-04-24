@@ -58,6 +58,7 @@ input{
     padding-left: 2rem;
     margin: 10px;
     height: 2rem;
+    width: 200px;
 }
 .question{
   margin-left: 10px;

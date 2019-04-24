@@ -25,11 +25,11 @@ class Searchbar extends React.Component {
         return (
             <div className='searchbar'>
                 <div className='search-category'>
-                    <h3 className='question'>In wich year were you born?</h3>
+                    <h3 className='question'>In what year were you born?</h3>
                     <input name="year" placeholder="e.g. 1982" onChange={this.handleChange} value={this.props.state.year}/>
                 </div>
                 <div className='search-category'>
-                    <h3 className='question'>What are your favourite  movie genre</h3>
+                    <h3 className='question'>What are your favourite  movie genre?</h3>
                     <input name="genre" placeholder="e.g. Comedy" onChange={this.handleChange} value={this.props.state.genre}/>
                 </div>
             </div>
