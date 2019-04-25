@@ -7,11 +7,12 @@ const csurf = require('csurf');
 const tmdb = require('./secrets');
 const key = tmdb.api_key;
 const axios = require('axios');
-//var https = require("https");
-const moviesByYear = 'https://api.themoviedb.org/3/discover/movie?api_key=' + key +'&sort_by=revenue.desc&include_adult=true&language=en-US&primary_release_date.lte='
-// const TestURL = 'https://api.themoviedb.org/3/discover/movie?api_key=77da04c403c5708cfdf55c397aabb35c&language=en-US&sort_by=popularity.desc&certification.lte=1992&include_adult=false&include_video=false&page=1'
 
-const tmdbUrl = require('./tmdb')
+const moviesByYear = 'https://api.themoviedb.org/3/discover/movie?api_key=' + key +'&sort_by=revenue.desc&include_adult=true&language=en-US&primary_release_date.lte=';
+const moviesByGenre = 'https://api.themoviedb.org/3/discover/movie?api_key=' + key + '&sort_by=vote_count.desc&include_adult=true&language=en-US&without_genres=';
+const movieOverview1 = 'https://api.themoviedb.org/3/movie/';
+const movieOverview2 = "?api_key=" + key + "&language=en-US"
+
 
 
 app.use(compression());
@@ -34,7 +35,7 @@ app.use(
 
 app.use(cookieSession({
     secret: `I'm always angry.`,
-    maxAge: 1000 * 60 * 60 * 24 * 14 // Cookies lasts 2 weeks
+    maxAge: 1000 * 60 * 60 * 24 * 14
 }));
 
 app.use(csurf());
@@ -49,20 +50,22 @@ app.use(function(req, res, next){
     next();
 });
 
-/// REQUEST TO MOVIEDATABASE
-
 
 app.get('/get-movie-by-year', async (req, res) => {
-    const byYear = await axios.get(moviesByYear + req.query.year)
-    console.log(req.query.year)
-    console.log(byYear)
-    res.json(byYear.data);
-    console.log('data in get by year: ',byYear.data)
- })
+    const byYear = await axios.get(moviesByYear + req.query.year);
+    res.json({movies: byYear.data});
+});
 
+app.get('/movie-by-genre', async (req, res) =>{
+    const byGenre = await axios.get(moviesByGenre + req.query.list);
+    res.json({movies: byGenre.data});
+});
 
-
-
+app.get('/movie-detail', async (req, res) =>{
+    const overview = await axios.get(movieOverview1 + req.query.id + movieOverview2);
+    res.json({movies: overview.data});
+    console.log('movies: overview.data: ', overview.data);
+});
 
 
 /////// LAST ROUTE ////
@@ -70,6 +73,6 @@ app.get('*', function(req, res) {
     res.sendFile(__dirname + '/index.html');
 });
 
-app.listen(8080, function() {
-    console.log("I'm listening.");
+app.listen(8085, function() {
+    console.log("I'm listening at 8085.");
 });
