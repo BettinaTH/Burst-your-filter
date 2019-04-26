@@ -39,7 +39,7 @@ class Results extends React.Component {
                     <h2>Here is a list of movies</h2>
                     <h4>which are older than you.</h4>
                 </div>
-                {movieList}} 
+                {movieList}
             </div>
         );
     };

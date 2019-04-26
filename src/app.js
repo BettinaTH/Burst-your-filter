@@ -39,12 +39,9 @@ export default class App extends React.Component {
                     <div className='nav-bar'>
                         <img className="logo-home vibrate-1" src="bubble.png" alt="bubble"/>
                         <div className='word-order'>
-                            <h2 className='letters'>BURST</h2><h2 className='letters'>YOUR</h2><h2 className='letters'>BUBBLE</h2>
+                            <h2 className='letters'>BURST</h2><h2 className='letters'>YOUR</h2><h2 className='letters'>FILTER</h2>
                         </div>
                         <Searchbar/>
-                    </div>
-                    <div>
-                       
                     </div>
                     <div className='result-container'>
                         <div className='result-col'>

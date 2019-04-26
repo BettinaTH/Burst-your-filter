@@ -59,6 +59,3 @@ export async function showDetailsForMovie(id) {
         movie: data.movies
     };
 }
-
-
-

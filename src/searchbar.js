@@ -1,22 +1,19 @@
 import React from 'react';
-import axios from './axios';
 import { connect } from 'react-redux';
-import { setParam, setGenre } from './actions';
-//import { Link } from 'react-router-dom';
+import { setParam } from './actions';
 
 class Searchbar extends React.Component {
     constructor() {
         super();
        
         this.handleChange = this.handleChange.bind(this);
-        //this.handleGenre = this.handleGenre.bind(this);
 
         }
         
         handleChange(e) {
             this.props.dispatch(setParam(e.target.name, e.target.value))
             sessionStorage.setItem(e.target.name, e.target.value)
-            console.log('STORAGE: ', sessionStorage)
+            //console.log('STORAGE: ', sessionStorage)
         } 
       
 

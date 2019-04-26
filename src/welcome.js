@@ -18,7 +18,7 @@ class Welcome extends React.Component {
             <div className='container-homepage'>
                 <div className='container-col'>
                     <img className="logo-home vibrate-1" src="bubble.png" alt="bubble"/>
-                    <h2 className='letters'>BURST YOUR BUBBLE</h2>
+                    <h2 className='letters'>BURST YOUR FILTER</h2>
                 </div>
                 <div className='container-row'>
                     <div>
@@ -26,7 +26,7 @@ class Welcome extends React.Component {
                     </div>
                 </div>
                 <div className='container-row'>
-                <button className='call-to-action' onClick={this.submit}>Burst your bubble</button>
+                <button className='call-to-action' onClick={this.submit}>Burst your filter</button>
                 </div>
             </div>
         </div>

@@ -12,7 +12,7 @@ body{
 
 .nav-bar{
     display: grid;
-    grid-template-columns: 120px 120px auto 100px 100px;
+    grid-template-columns: 180px 100px auto 100px 100px;
     margin-top: 20px;
 
 }
@@ -20,6 +20,7 @@ body{
     display: flex;
     flex-direction: column;
     margin-left: 2px;
+    margin-top: 15px;
 }
 .welcome{
 margin-top: 10px;
@@ -42,8 +43,8 @@ border-top: 30%;
   justify-content: center;
 }
 .logo-home{
-    height: 100px;
-    width: 100px;
+    height: 150px;
+    width: 150px;
     margin-right: 4px;
 }
 .searchbar{
@@ -146,6 +147,8 @@ h2, h4{
   bottom: 0;
   background: rgba(0, 0, 0, 0.5);
   z-index: -1;
+  display: flex;
+  flex-direction: row-reverse;
 }
 
 .overview .overview-content {

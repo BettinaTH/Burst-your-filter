@@ -34,7 +34,7 @@ class Genre extends React.Component {
         return (
             <div>
                 <h2>Here is the list of movies</h2>
-                <h4>which are older than you.</h4>
+                <h4>which are not your genre.</h4>
                 {movieList}
             </div>
         );
