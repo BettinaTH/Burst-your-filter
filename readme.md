@@ -12,6 +12,5 @@ Users can search for movies by year or genre.
  * TMDB API
 
 ## upcoming features
- * Account Deletion
- * user search
- * private messages
+ * search Director by opposite sex
+ * adding a watchlist
